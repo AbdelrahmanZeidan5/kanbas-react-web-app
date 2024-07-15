@@ -1,35 +1,92 @@
+import { BsGripVertical } from "react-icons/bs";
+import AssignmentControls from "./AssignmentControls";
+import AssignmentControlButtons from "./AssignmentControlButtons";
+import LessonControlButtons from "../Modules/LessonControlButtons";
+import { FaRegEdit } from "react-icons/fa";
+
+
 export default function Assignments() {
     return (
       <div id="wd-assignments">
-        <input id="wd-search-assignment" placeholder="Search for Assignments" />
-        <button id="wd-add-assignment-group">+ Group</button>
-        <button id="wd-add-assignment">+ Assignment</button>
-        <h3 id="wd-assignments-title">
-          ASSIGNMENTS 40% of Total <button>+</button>
-        </h3>
-        <ul id="wd-assignment-list">
-          <li className="wd-assignment-list-item">
-            <a className="wd-assignment-link"
-              href="#/Kanbas/Courses/1234/Assignments/123">
-              A1 - ENV + HTML
-            </a>
-            <p>Multiple Modules | <strong>Not Available until</strong> May 6 at 12:00am | <strong>Due</strong> May 13 at 11:59pm | 100p pts</p>
-          </li>
-          <li className="wd-assignment-list-item">
-          <a className="wd-assignment-link"
-              href="#/Kanbas/Courses/1234/Assignments/124">
-              A2 - CSS + BOOTSTRAP
-            </a>
-            <p>Multiple Modules | <strong>Not Available until</strong> May 13 at 12:00am | <strong>Due</strong> May 20 at 11:59pm | 100p pts</p>
-          </li>
-          <li className="wd-assignment-list-item">
-          <a className="wd-assignment-link"
-              href="#/Kanbas/Courses/1234/Assignments/125">
-              A3 - JAVASCRIPT + REACT
-            </a>
-            <p>Multiple Modules | <strong>Not Available until</strong> May 20 at 12:00am | <strong>Due</strong> May 27 at 11:59pm | 100p pts</p>
+        <AssignmentControls /><br /><br /><br /><br />
+      
+        <ul id="wd-assignment-list" className="list-group rounded-0">
+          <li className="wd-assignment-list-item list-group-item p-0 mb-5 fs-5 border-gra">
+
+            <div className="wd-title p-3 ps-2 bg-secondary d-flex align-items-center">
+              <div className="d-flex align-items-center">
+                <BsGripVertical className="me-2 fs-3" />
+                <span className="dropdown-toggle me-1"></span>
+                ASSIGNMENTS
+              </div>
+              <AssignmentControlButtons />
+            </div>
+
+            <ul className="wd-assignment-items list-group rounded-0">
+              <li className="wd-assignment-item list-group-item d-flex align-items-center p-3 ps-1">
+                <div className="d-flex align-items-center">
+                  <BsGripVertical className="me-2 fs-3" />
+                  <FaRegEdit className="me-2 fs-3 assignment-icon" />
+                </div>
+                
+                <div className="flex-grow-1">
+                  <a className="wd-assignment-link text-decoration-none text-dark" href="#/Kanbas/Courses/1234/Assignments/124">
+                    <strong>A1</strong>
+                  </a>
+                  <div className="assignment-details">
+                      <span className="text-danger">Multiple Modules </span>| 
+                      <span><strong> Not available until </strong> May 6 at 12:00am</span> |
+                      <span><strong>Due</strong> May 13 at 11:59pm</span> |
+                      <span>100 pts</span>
+                  </div>
+                </div>
+                <LessonControlButtons/>
+              </li>
+
+              <li className="wd-assignment-item list-group-item d-flex align-items-center p-3 ps-1">
+                <div className="d-flex align-items-center">
+                  <BsGripVertical className="me-2 fs-3" />
+                  <FaRegEdit className="me-2 fs-3 assignment-icon" />
+                </div>
+                
+                <div className="flex-grow-1">
+                  <a className="wd-assignment-link text-decoration-none text-dark" href="#/Kanbas/Courses/1234/Assignments/124">
+                    <strong>A2</strong>
+                  </a>
+                  <div className="assignment-details">
+                      <span className="text-danger">Multiple Modules </span> | 
+                      <span><strong> Not available until </strong> May 13 at 12:00am</span> |
+                      <span><strong>Due</strong> May 20 at 11:59pm</span> |
+                      <span>100 pts</span>
+                  </div>
+                </div>
+                <LessonControlButtons/>
+              </li>
+
+              <li className="wd-assignment-item list-group-item d-flex align-items-center p-3 ps-1">
+                <div className="d-flex align-items-center">
+                  <BsGripVertical className="me-2 fs-3" />
+                  <FaRegEdit className="me-2 fs-3 assignment-icon" />
+                </div>
+                
+                <div className="flex-grow-1">
+                  <a className="wd-assignment-link text-decoration-none text-dark" href="#/Kanbas/Courses/1234/Assignments/124">
+                    <strong>A3</strong>
+                  </a>
+                  <div className="assignment-details">
+                      <span className="text-danger">Multiple Modules </span> | 
+                      <span><strong> Not available until </strong> May 20 at 12:00am</span> |
+                      <span><strong>Due</strong> May 27 at 11:59pm</span> |
+                      <span>100 pts</span>
+                  </div>
+                </div>
+                <LessonControlButtons/>
+              </li>
+              
+            </ul>
           </li>
         </ul>
       </div>
-  );}
+  );
+}
   
