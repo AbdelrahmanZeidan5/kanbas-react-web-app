@@ -17,7 +17,7 @@ export default function CoursesNavigation() {
     <div id="wd-courses-navigation" className="list-group fs-5 rounded-0">
       {links.map((link) => {
         const linkPath = getLinkPath(link);
-        const isActive = pathname === linkPath;
+        const isActive = pathname.startsWith(linkPath);
         return (
           <Link 
             to={linkPath} 
