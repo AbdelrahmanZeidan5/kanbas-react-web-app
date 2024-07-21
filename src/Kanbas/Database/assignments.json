@@ -1,0 +1,23 @@
+[
+    { "_id": "A101", "title": "React Components Assignment", "course": "RS101" },
+    { "_id": "A102", "title": "State and Props Analysis", "course": "RS101" },
+    { "_id": "A103", "title": "React Lifecycle Project", "course": "RS101" },
+    { "_id": "A201", "title": "HTML Basics Quiz", "course": "RS102" },
+    { "_id": "A202", "title": "Forms and Inputs Analysis", "course": "RS102" },
+    { "_id": "A203", "title": "Semantic HTML Project", "course": "RS102" },
+    { "_id": "A301", "title": "CSS Selectors Task", "course": "RS103" },
+    { "_id": "A302", "title": "Flexbox and Grid Layout", "course": "RS103" },
+    { "_id": "A303", "title": "Responsive Design Exam", "course": "RS103" },
+    { "_id": "A401", "title": "JavaScript Fundamentals Report", "course": "RS104" },
+    { "_id": "A402", "title": "DOM Manipulation Project", "course": "RS104" },
+    { "_id": "A403", "title": "Asynchronous JavaScript Exam", "course": "RS104" },
+    { "_id": "A501", "title": "TypeScript Basics Analysis", "course": "RS105" },
+    { "_id": "A502", "title": "TypeScript with React Project", "course": "RS105" },
+    { "_id": "A503", "title": "Advanced TypeScript Quiz", "course": "RS105" },
+    { "_id": "A601", "title": "NodeJS Basics Task", "course": "RS106" },
+    { "_id": "A602", "title": "Building APIs with NodeJS", "course": "RS106" },
+    { "_id": "A603", "title": "NodeJS Performance Exam", "course": "RS106" },
+    { "_id": "A701", "title": "Angular Components Quiz", "course": "RS107" },
+    { "_id": "A702", "title": "RxJS and State Management Project", "course": "RS107" },
+    { "_id": "A703", "title": "Angular Universal Report", "course": "RS107" }
+]

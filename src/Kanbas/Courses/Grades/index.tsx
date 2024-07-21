@@ -1,8 +1,20 @@
 import { FaSearch } from "react-icons/fa";
+import * as db from "../../Database";
 import GradesControls from "./GradesControls";
 import { CiFilter } from "react-icons/ci";
+import { useParams } from "react-router";
+
 
 export default function Grades() { 
+    const { cid } = useParams();
+    const grades = db.grades;
+    const assignments = db.assignments;
+
+    const courseAssignments = assignments.filter((assignment) => assignment.course === cid);
+    const courseUsers = db.enrollments.filter((enrollment) => enrollment.course === cid);
+    const students = db.users.filter((user) => courseUsers.some((enrollment) => enrollment.user === user._id));
+    const courseGrades = grades.filter((grade) => courseUsers.some((user) => user.user === grade.student));
+
     return (
         <div id="wd-grades">
             <GradesControls /> <br /><br /><br /><br />
@@ -50,56 +62,29 @@ export default function Grades() {
                     <table className="table table-bordered table-striped">
                         <thead>
                             <tr>
-                                <th className="align-middle">Student Name</th>
-                                <th>A1 Setup <br /> Out of 100</th>
-                                <th>A2 Html <br /> Out of 100</th>
-                                <th>A3 CSS <br /> Out of 100</th>
-                                <th>A4 BOOTSTRAP <br /> Out of 100</th>
+                                {courseAssignments.length > 0 && (
+                                    <>
+                                        <th className="align-middle">Student Name</th>
+                                        {courseAssignments.map((assignment) => (
+                                            <th key={assignment._id}>{assignment.title}</th>
+                                        ))}
+                                    </>
+                                )}
                             </tr>
                         </thead>
+
                         <tbody>
-                            <tr>
-                                <td className="text-danger">Jane Adams</td>
-                                <td>100%</td>
-                                <td>96.67%</td>
-                                <td>92.18%</td>
-                                <td>66.22%</td>
-                            </tr>
-                            <tr>
-                                <td className="text-danger">Christina Allen</td>
-                                <td>100%</td>
-                                <td>100%</td>
-                                <td>100%</td>
-                                <td>100%</td>
-                            </tr>
-                            <tr>
-                                <td className="text-danger">Samreen Ansari</td>
-                                <td>100%</td>
-                                <td>100%</td>
-                                <td>100%</td>
-                                <td>100%</td>
-                            </tr>
-                            <tr>
-                                <td className="text-danger">Han Boo</td>
-                                <td>100%</td>
-                                <td>100%</td>
-                                <td>88.03%</td>
-                                <td>98.99%</td>
-                            </tr>
-                            <tr>
-                                <td className="text-danger">Mahi Sai Srinivias Bobbilli</td>
-                                <td>100%</td>
-                                <td>96.67%</td>
-                                <td>98.37%</td>
-                                <td>100%</td>
-                            </tr>
-                            <tr>
-                                <td className="text-danger">Ciran Sao</td>
-                                <td>100%</td>
-                                <td>100%</td>
-                                <td>100%</td>
-                                <td>100%</td>
-                            </tr>
+                            {students.map((student) => (
+                                <tr key={student._id}>
+                                    <td className="text-danger">{student.firstName} {student.lastName}</td>
+                                    {courseAssignments.map((assignment) => {
+                                        const grade = courseGrades.find((grade) => grade.assignment === assignment._id && grade.student === student._id);
+                                        return (
+                                            <td key={assignment._id}>{grade ? `${grade.grade}%` : "N/A"}</td>
+                                        );
+                                    })}
+                                </tr>
+                            ))}
                         </tbody>
                     </table>
                 </div>
