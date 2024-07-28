@@ -11,8 +11,8 @@ export default function TodoItem({ todo}: {todo: { id: string; title: string }})
                     <span>{todo.title}</span>
                 </div>
                 <div className="col-auto">
-                    <button onClick={() => dispatch(setTodo(todo))} id="wd-set-todo-click" className="btn btn-primary" style={{ marginRight: '10px' }}>Edit</button>
-                    <button onClick={() => dispatch(deleteTodo(todo.id))} id="wd-delete-todo-click" className="btn btn-danger  ml-2">Delete</button>
+                    <button onClick={() => dispatch(setTodo(todo))} id="wd-set-todo-click" className="btn btn-primary me-2" >Edit</button>
+                    <button onClick={() => dispatch(deleteTodo(todo.id))} id="wd-delete-todo-click" className="btn btn-danger">Delete</button>
                 </div>
             </div>
         </li>
