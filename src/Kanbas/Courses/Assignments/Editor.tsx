@@ -1,9 +1,10 @@
 import { addAssignment, updateAssignment } from "./reducer";
-
 import { useNavigate, useParams } from "react-router";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
+import * as client from "./client";
+
 
 export default function AssignmentEditor() {
     const { id, cid } = useParams();
@@ -18,7 +19,19 @@ export default function AssignmentEditor() {
     const [dueDate, setDueDate] = useState(assignment?.dueDate || "");
     const [availableFrom, setAvailableFrom] = useState(assignment?.availableFrom || "");
     const [availableUntil, setAvailableUntil] = useState(assignment?.availableUntil || "");
+
+
+    const createAssignment = async (assignment: any) => {
+      const newAssignment = await client.createAssignment(cid as string, assignment);
+      dispatch(addAssignment(newAssignment));
+    };
   
+    
+    const saveAssignment = async (assignment: any) => {
+      const status = await client.updateAssignment(assignment);
+      dispatch(updateAssignment(assignment));
+    }
+
     const handleSave = () => {
       const newAssignment = {
         _id: id || new Date().getTime().toString(),
@@ -33,9 +46,9 @@ export default function AssignmentEditor() {
 
 
       if (id && id !== "new") {
-        dispatch(updateAssignment(newAssignment));
+        saveAssignment(newAssignment);
       } else {
-        dispatch(addAssignment(newAssignment));
+        createAssignment(newAssignment);
       }
       
       navigate(`/Kanbas/Courses/${cid}/Assignments`);

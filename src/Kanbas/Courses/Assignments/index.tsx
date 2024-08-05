@@ -4,9 +4,10 @@ import { AssignmentsControlButtons, AssignmentControlButtons } from "./Assignmen
 import { FaRegEdit } from "react-icons/fa";
 import { useParams } from "react-router";
 import { useSelector, useDispatch } from "react-redux";
-import { deleteAssignment } from "./reducer";
-import { useState } from "react";
+import { setAssignments, deleteAssignment } from "./reducer";
+import { useState, useEffect } from "react";
 import DeleteAssignmentModal from "./DeleteAssignmentModal";
+import * as client from "./client";
 
 export default function Assignments() {
     const { cid } = useParams();
@@ -14,12 +15,23 @@ export default function Assignments() {
     const { assignments } = useSelector((state: any) => state.assignmentsReducer);
     const [selectedAssignment, setSelectedAssignment] = useState<{ id: string, title: string } | null>(null);
 
+
+    const fetchAssignments = async () => {
+      const assignments = await client.findAssignmentsForCourse(cid as string);
+      dispatch(setAssignments(assignments));
+    };
+
+    useEffect(() => {
+      fetchAssignments();
+    }, []);
+
     const handleDeleteClick = (assignmentId: string, assignmentTitle: string) => {
         setSelectedAssignment({ id: assignmentId, title: assignmentTitle });
     };
 
-    const confirmDelete = () => {
+    const confirmDelete = async () => {
         if (selectedAssignment) {
+            await client.removeAssignment(selectedAssignment.id);
             dispatch(deleteAssignment(selectedAssignment.id));
             setSelectedAssignment(null);
         }
