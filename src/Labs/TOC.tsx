@@ -57,8 +57,8 @@ export default function TOC() {
       </li>
 
       <li className="nav-item">
-        <a id="wd-github" href="https://kanbas-node-server-app-az-7e3587bbf6e9.herokuapp.com/" className="nav-link" target="_blank" rel="noreferrer">
-          Heroku
+        <a id="wd-github" href="https://kanbas-node-server-app-5mli.onrender.com/" className="nav-link" target="_blank" rel="noreferrer">
+          Render NodeJS APP
         </a>
       </li>
     </ul>
